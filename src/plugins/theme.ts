@@ -38,9 +38,7 @@ export const themeVars = {
 
 /** 生成CSS变量到根元素 */
 export function injectThemeVars(): void {
-  const root = document.documentElement;
-  
-  // 添加基础颜色变量，映射配置中的键名到CSS变量名
+  // 基础颜色变量映射：配置键 -> CSS变量名
   const colorMapping: Record<string, string> = {
     'base-text': '--base-text-color',
     'container': '--container-bg-color',
@@ -49,24 +47,43 @@ export function injectThemeVars(): void {
     'nprogress': '--nprogress-color',
     'divider': '--divider-color',
   };
-  
+
+  // 收集所有需要写入 :root 的 CSS 变量
+  const allVars: Record<string, string> = {};
+  const normalizeRGB = (val: string) => val.includes(',') ? val.replace(/\s*,\s*/g, ' ') : val;
+
+  // 写入基础颜色变量（保持变量值为 "r, g, b"，方便下游使用 rgb(var(--...)))
   Object.entries(themeConfig.colors).forEach(([key, value]) => {
-    const cssVarName = colorMapping[key] || `--${key}-color`;
-    root.style.setProperty(cssVarName, value);
+  const cssVarName = colorMapping[key] || `--${key}-color`;
+    // 使用空格分隔的 RGB，便于 rgb(var(--x) / alpha) 语法
+    allVars[cssVarName] = normalizeRGB(value);
   });
-  
-  // 生成调色板变量
-  const cssVars = generateColorPaletteVars({
+
+  // 生成并合并调色板变量
+  const paletteVars = generateColorPaletteVars({
     primary: themeConfig.colors.primary,
     info: themeConfig.colors.info,
     success: themeConfig.colors.success,
     warning: themeConfig.colors.warning,
-    error: themeConfig.colors.error
+    error: themeConfig.colors.error,
   });
-  
-  Object.entries(cssVars).forEach(([key, value]) => {
-    root.style.setProperty(key, value);
+  // palette 变量同样规范为以空格分隔
+  Object.entries(paletteVars).forEach(([k, v]) => {
+    allVars[k] = normalizeRGB(v);
   });
+
+  // 以 :root 规则的形式注入样式，避免使用 root.style
+  const cssText = `:root{\n${Object.entries(allVars)
+    .map(([k, v]) => `  ${k}: ${v};`)
+    .join('\n')}\n}`;
+
+  let styleEl = document.getElementById('theme-vars') as HTMLStyleElement | null;
+  if (!styleEl) {
+    styleEl = document.createElement('style');
+    styleEl.id = 'theme-vars';
+    document.head.appendChild(styleEl);
+  }
+  styleEl.textContent = cssText;
 }
 
 /** 获取Antd主题配置 */
