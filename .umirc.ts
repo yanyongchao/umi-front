@@ -7,6 +7,8 @@ export default defineConfig({
   ],
 
   npmClient: "pnpm",
-  unocss: {},
+  unocss: {
+    watch: ['src/**/*.tsx', 'src/**/*.less'],
+  },
   plugins: ["@umijs/plugins/dist/unocss"],
 });

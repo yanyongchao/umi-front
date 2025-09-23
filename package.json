@@ -9,6 +9,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "antd": "^5.27.4",
     "umi": "^4.5.0",
     "unocss": "^66.5.1"
   },
@@ -16,14 +17,16 @@
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "@umijs/plugins": "^4.5.0",
+    "@unocss/cli": "^66.5.2",
     "@unocss/preset-icons": "^66.5.1",
     "@unocss/preset-wind3": "^66.5.1",
     "@unocss/transformer-directives": "^66.5.1",
     "@unocss/transformer-variant-group": "^66.5.1",
+    "less": "^4.4.1",
+    "less-loader": "^12.3.0",
     "prettier": "^2.8.8",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.3",
-    "tailwindcss": "^3",
     "typescript": "^5.0.3"
   }
 }
