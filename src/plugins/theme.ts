@@ -73,13 +73,3 @@ export function injectThemeVars(): void {
 export function getAntdThemeConfig() {
   return themeConfig.antd || {};
 }
-
-// 自动注入主题变量
-if (typeof document !== 'undefined') {
-  // 确保DOM加载完成后注入
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectThemeVars);
-  } else {
-    injectThemeVars();
-  }
-}

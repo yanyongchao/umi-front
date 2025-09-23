@@ -5,6 +5,7 @@ import {
   transformerDirectives,
   transformerVariantGroup
 } from 'unocss'
+import { themeVars } from './src/plugins/theme';
 
 export default defineConfig({
   presets: [
@@ -13,7 +14,7 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      brand: '#0078E7',
+      ...themeVars.colors,
     },
   },
   transformers: [transformerDirectives(), transformerVariantGroup()]

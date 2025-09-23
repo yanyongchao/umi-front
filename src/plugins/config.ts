@@ -41,27 +41,27 @@ export interface ThemeConfig {
 /** 默认主题配置 */
 export const defaultThemeConfig: ThemeConfig = {
   colors: {
-    primary: '59, 130, 246', // blue-500
-    info: '14, 165, 233', // sky-500
-    success: '34, 197, 94', // green-500
-    warning: '251, 191, 36', // amber-500
-    error: '239, 68, 68', // red-500
-    'base-text': '55, 65, 81', // gray-700
-    container: '255, 255, 255', // white
-    inverted: '17, 24, 39', // gray-900
-    layout: '249, 250, 251', // gray-50
-    nprogress: '59, 130, 246', // blue-500
-    divider: '229, 231, 235', // gray-200
+    primary: '116, 69, 255', // #7445FF
+    info: '116, 69, 255', // #7445FF
+    success: '0, 175, 44', // #00AF2C
+    warning: '255, 132, 0', // #FF8400
+    error: '255, 0, 0', // #ff0000
+    'base-text': '51, 51, 51', // rgb(51, 51, 51)
+    container: '255, 255, 255', // rgb(255, 255, 255)
+    inverted: '0, 20, 40', // rgb(0, 20, 40)
+    layout: '247, 250, 252', // rgb(247, 250, 252)
+    nprogress: '116, 69, 255', // #7445FF
+    divider: '230, 230, 230', // rgb(230, 230, 230)
   },
   antd: {
-    colorPrimary: 'rgb(59, 130, 246)',
-    colorSuccess: 'rgb(34, 197, 94)',
-    colorWarning: 'rgb(251, 191, 36)',
-    colorError: 'rgb(239, 68, 68)',
-    colorInfo: 'rgb(14, 165, 233)',
+    colorPrimary: 'rgb(116, 69, 255)', // #7445FF
+    colorSuccess: 'rgb(0, 175, 44)', // #00AF2C
+    colorWarning: 'rgb(255, 132, 0)', // #FF8400
+    colorError: 'rgb(255, 0, 0)', // #ff0000
+    colorInfo: 'rgb(116, 69, 255)', // #7445FF
     borderRadius: 6,
     colorBgContainer: 'rgb(255, 255, 255)',
-    colorText: 'rgb(55, 65, 81)',
+    colorText: 'rgb(51, 51, 51)',
   }
 };
 
