@@ -49,7 +49,6 @@ export default function HomePage() {
   return (
     <div className="p-4">
       <Title level={2} className='text-primary'>Yay! Welcome to umi!</Title>
-      
       <Space direction="vertical" size="large" style={{ width: '100%' }}>
         <div>
           <img src={yayJpg} width="388" />

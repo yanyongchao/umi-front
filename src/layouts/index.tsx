@@ -1,21 +1,24 @@
-import { Link, Outlet } from 'umi';
-import styles from './index.less';
+import { Outlet } from 'umi';
+import { ConfigProvider } from 'antd';
+import { useEffect } from 'react';
+import { getAntdThemeConfig, injectThemeVars } from '@/plugins/theme/theme';
 
 export default function Layout() {
+  // 注入主题变量到CSS
+  useEffect(() => {
+    injectThemeVars();
+  }, []);
+
+  // 获取Antd主题配置
+  const antdTheme = getAntdThemeConfig();
+
   return (
-    <div className={styles.navs}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/docs">Docs</Link>
-        </li>
-        <li>
-          <a href="https://github.com/umijs/umi">Github</a>
-        </li>
-      </ul>
+    <ConfigProvider
+      theme={{
+        token: antdTheme,
+      }}
+    >
       <Outlet />
-    </div>
+    </ConfigProvider>
   );
 }
