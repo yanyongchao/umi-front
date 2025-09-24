@@ -5,7 +5,7 @@ import {
   transformerDirectives,
   transformerVariantGroup
 } from 'unocss'
-import { themeVars } from './src/plugins/theme';
+import { themeVars } from './src/plugins/theme/theme';
 
 export default defineConfig({
   presets: [
