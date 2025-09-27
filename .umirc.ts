@@ -25,6 +25,10 @@ export default defineConfig({
     {
       path: "/500",
       component: "error/500",
+    },
+    {
+      path: "*",
+      redirect: "/404",
     }
   ],
 
